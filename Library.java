@@ -4,7 +4,7 @@ public class Library {
     public ArrayList<Document> Total_objects;
 
     public Library(){
-    
+        Total_objects = new ArrayList<Document>();
     }
     public ArrayList<Document> getTotal_objects() {
         return Total_objects;
