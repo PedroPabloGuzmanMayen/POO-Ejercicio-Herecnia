@@ -1,8 +1,13 @@
+import java.util.ArrayList;
+
 public class User {
     private long userID;
     private String location;
     private String name;
-    private Document[] user_document ;
+    private ArrayList<Long> documents; 
+    public User(){
+        documents = new ArrayList<Long>();
+    }
     public long getUserID() {
         return userID;
     }
@@ -21,12 +26,13 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    public Document[] getUser_document() {
-        return user_document;
+    public ArrayList<Long> getDocuments() {
+        return documents;
     }
-    public void setUser_document(Document[] user_document) {
-        this.user_document = user_document;
+    public void setDocuments(ArrayList<Long> documents) {
+        this.documents = documents;
     }
+
 
     
     
