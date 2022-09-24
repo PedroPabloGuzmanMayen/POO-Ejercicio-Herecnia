@@ -6,6 +6,7 @@ public class Methods_ExInheritance{
 
     public void addObjectToLibrary(Document d, Library L, Scanner s){
         System.out.println("De que tipo es el documento que quiere agregar?");
+        s.nextLine();
         String docType = s.nextLine();
         docType.toLowerCase();
         while (!docType.equals("libro") && !docType.equals("revista") && !docType.equals("articulo") ){
@@ -85,9 +86,11 @@ public class Methods_ExInheritance{
 
     }
     public void addUser(Library L, User u, Scanner s, Random r){
+        u = new User();
         System.out.println("Agregue un nuevo cliente");
         System.out.println("");
         System.out.println("Ingrese el nombre del cliente");
+        s.nextLine();
         u.setName(s.nextLine());
         u.setUserID(r.nextLong(900000)+100000);
         System.out.println("El ID del cliente es el siguiente: " + u.getUserID());
@@ -95,6 +98,9 @@ public class Methods_ExInheritance{
         u.setLocation(s.nextLine());
         L.getCustomers().add(u);
         System.out.println("Usuario agregado");
+        for (int i = 0; i < L.getCustomers().size(); i ++){
+            System.out.println(L.getCustomers().get(i).getName());
+        }
     }
 
     public void BorrowAnObject(Library L, User u, Scanner s){

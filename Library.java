@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Library {
     public ArrayList<Document> Total_objects;
     public ArrayList<User> Customers; 
+    
 
     public Library(){
         Total_objects = new ArrayList<Document>();
