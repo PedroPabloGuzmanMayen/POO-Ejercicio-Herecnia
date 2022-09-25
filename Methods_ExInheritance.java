@@ -8,7 +8,7 @@ public class Methods_ExInheritance{
         System.out.println("De que tipo es el documento que quiere agregar?");
         s.nextLine();
         String docType = s.nextLine();
-        docType.toLowerCase();
+        docType = docType.toLowerCase();
         while (!docType.equals("libro") && !docType.equals("revista") && !docType.equals("articulo") ){
             System.out.println("Valor invalido, solamente puede ingresar los strings libro, revista o articulo. Intente de nuevo");
             docType = s.nextLine();
@@ -98,18 +98,16 @@ public class Methods_ExInheritance{
         u.setLocation(s.nextLine());
         L.getCustomers().add(u);
         System.out.println("Usuario agregado");
-        for (int i = 0; i < L.getCustomers().size(); i ++){
-            System.out.println(L.getCustomers().get(i).getName());
-        }
+
     }
 
     public void BorrowAnObject(Library L, User u, Scanner s){
         System.out.println("Estos son los documentos disponibles en la biblioteca: ");
         for (int i = 0; i<L.getTotal_objects().size(); i++){
-            System.out.println(L.getTotal_objects().get(i).getTitle() + "el Id de este titulo es: " +  L.getTotal_objects().get(i).getId() );
+            System.out.println(L.getTotal_objects().get(i).getTitle() + " el Id de este titulo es: " +  L.getTotal_objects().get(i).getId() );
 
         }
-        System.out.println("Cual de estos titulos desea pedir prestado. (Indiquelo medianta el ID del titulo)");
+        System.out.println("Cual de estos titulos desea pedir prestado. (Indiquelo mediante el ID del titulo)");
         Long answer = s.nextLong();
         for (int i = 0; i<L.getTotal_objects().size(); i++){
             if (L.getTotal_objects().get(i).getId() == answer){
@@ -129,6 +127,19 @@ public class Methods_ExInheritance{
             }
         }
         
+
+    }
+    public void searchById(Library L, Scanner s){
+        System.out.println("Ingrese el ID de la publicacion que quiere encontrar: ");
+        long answerID = s.nextLong();
+        for (int i = 0; i<L.getTotal_objects().size(); i++){
+            if (L.getTotal_objects().get(i).getId() == answerID){
+                System.out.println(L.getTotal_objects().get(i).getTitle())
+            }
+            else{
+                System.out.println("No hay documentos que tengan ese ID");
+            }
+        }
 
     }
 

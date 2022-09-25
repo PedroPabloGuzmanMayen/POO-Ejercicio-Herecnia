@@ -5,7 +5,7 @@ public class Main {
     static Boolean condition = true; 
     static Methods_ExInheritance metIn = new Methods_ExInheritance();
     static Library library = new Library();
-    static User user = new User();
+    static User user;
     static Document document;
     static Scanner in = new Scanner(System.in);
     static Random random = new Random();
@@ -19,7 +19,8 @@ public class Main {
             System.out.println("");
             System.out.println("Seleccione lo que quiere hacer");
             System.out.println("OPCION 1: Agregar un documento a la libreria");
-            System.out.println("OPCION 2: Pedir prestado un documento");
+            System.out.println("OPCION 2: Agregar usuario");
+            System.out.println("OPCION 3: Pedir prestado un documento");
             int opcion = in.nextInt();
             if (opcion == 1){
                 metIn.addObjectToLibrary(document, library, in);
@@ -28,6 +29,9 @@ public class Main {
             if (opcion == 2){
                 metIn.addUser(library, user, in, random);
 
+            }
+            if (opcion ==3){
+                metIn.BorrowAnObject(library, user, in);
             }
             
 
