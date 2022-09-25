@@ -134,7 +134,7 @@ public class Methods_ExInheritance{
         long answerID = s.nextLong();
         for (int i = 0; i<L.getTotal_objects().size(); i++){
             if (L.getTotal_objects().get(i).getId() == answerID){
-                System.out.println(L.getTotal_objects().get(i).getTitle())
+                System.out.println(L.getTotal_objects().get(i).getTitle());
             }
             else{
                 System.out.println("No hay documentos que tengan ese ID");
