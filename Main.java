@@ -26,6 +26,8 @@ public class Main {
             System.out.println("OPCION 6: Cantidad de objetos de un usuario");
             System.out.println("OPCION 7: Devolver un documento");
             System.out.println("OPCION 8: Cantidad de documentos por materia");
+            System.out.println("OPCION 9: Cantidad de revistas por materia");
+            System.out.println("OPCION 10: Imprimir ");
             int opcion = in.nextInt();
             if (opcion == 1){
                 metIn.addObjectToLibrary(document, library, in);
@@ -56,6 +58,9 @@ public class Main {
             }
             if( opcion == 9){
                 metIn.docsandMagazinesByType(library, "revista");
+            }
+            if (opcion == 10){
+                metIn.printUserobjects(library, user);
             }
 
         }

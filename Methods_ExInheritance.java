@@ -128,14 +128,14 @@ public class Methods_ExInheritance{
                     Long answer2 = s.nextLong();
                     for (int j = 0; j<L.getCustomers().size(); i++){
                         if (L.getCustomers().get(j).getUserID() == answer2 && L.getCustomers().get(j).getDocuments().size() < 5 ){
-                            L.getCustomers().get(j).getDocuments().add(answer2);
+                            L.getCustomers().get(j).getDocuments().add(answer);
                             break;
     
     
                         }
                         else{
                             System.out.println("No tiene mas espacio, devuelva algun otro libro ");
-                            continue;
+                            break;
                         }
                     }
                
@@ -152,9 +152,7 @@ public class Methods_ExInheritance{
             if (L.getTotal_objects().get(i).getId() == answerID){
                 System.out.println(L.getTotal_objects().get(i).getTitle());
             }
-            //else{
-                //System.out.println("No hay documentos que tengan ese ID");
-            //}
+
         }
 
     }
@@ -217,6 +215,11 @@ public class Methods_ExInheritance{
             for(String i: docsTypes){
                 System.out.println(i + ": " + Collections.frequency(ar, i));
             }
+    }
+    public void printUserobjects(Library l, User u){
+      for (int i = 0;i<l.getCustomers().size(); i++ ){
+        System.out.println(l.getCustomers().get(i).getDocuments().get(i));
+      }
     }
 
 
