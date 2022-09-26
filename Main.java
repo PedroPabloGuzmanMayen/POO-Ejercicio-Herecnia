@@ -25,6 +25,7 @@ public class Main {
             System.out.println("OPCION 5: Verificar la disponibilidad de un documento");
             System.out.println("OPCION 6: Cantidad de objetos de un usuario");
             System.out.println("OPCION 7: Devolver un documento");
+            System.out.println("OPCION 8: Cantidad de documentos por materia");
             int opcion = in.nextInt();
             if (opcion == 1){
                 metIn.addObjectToLibrary(document, library, in);

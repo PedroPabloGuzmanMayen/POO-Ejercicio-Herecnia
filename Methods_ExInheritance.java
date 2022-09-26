@@ -209,6 +209,12 @@ public class Methods_ExInheritance{
         }
 
     }
+    public void magazinesBySubject (Library L){
+        Set<String> docsTypes = new HashSet<String>(L.getMagazine_types());
+        for(String i: docsTypes){
+            System.out.println(i + ": " + Collections.frequency(L.getMagazine_types(), i));
+        }
 
+    }
 
 }
