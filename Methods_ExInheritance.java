@@ -32,6 +32,7 @@ public class Methods_ExInheritance{
                 s.nextLine();
                 System.out.println("Materia del libro:");
                 d.setSubject(s.nextLine());
+                L.getDocument_types().add(d.getSubject());
                 d.setStatus(true);
 
                 L.getTotal_objects().add(d);
@@ -50,6 +51,8 @@ public class Methods_ExInheritance{
                 s.nextLine();
                 System.out.println("Materia de la revista");
                 d.setSubject(s.nextLine());
+                L.getDocument_types().add(d.getSubject());
+                L.getMagazine_types().add(d.getSubject());
                 System.out.println("Fecha de publicacion de la revista:");
                 ((Magazine)d).setYear(s.nextInt());
                 s.nextLine();
@@ -78,6 +81,7 @@ public class Methods_ExInheritance{
                 s.nextLine();
                 System.out.println("Materia del artículo:");
                 d.setSubject(s.nextLine());
+                L.getDocument_types().add(d.getSubject());
                 d.setStatus(true);
 
                 L.getTotal_objects().add(d);
@@ -111,18 +115,24 @@ public class Methods_ExInheritance{
         Long answer = s.nextLong();
         for (int i = 0; i<L.getTotal_objects().size(); i++){
             if (L.getTotal_objects().get(i).getId() == answer){
-                L.getTotal_objects().get(i).setQuantity(L.getTotal_objects().get(i).getQuantity() -1);
-                System.out.println("Ahora que ha seleccionado lo que quiere pedir prestado, indiquenos su ID de usuario");
-                Long answer2 = s.nextLong();
-                for (int j = 0; j<L.getCustomers().size(); i++){
-                    if (L.getCustomers().get(j).getUserID() == answer2 && L.getCustomers().get(j).getDocuments().size() < 5 ){
-                        L.getCustomers().get(j).getDocuments().add(answer2);
-
-
+                if(L.getTotal_objects().get(i).getQuantity() != 0){
+                    System.out.println("No quedan mas documentos con este Id, otra persona los tomo prestados, vuelva otro dia");
+                }
+                else{
+                    L.getTotal_objects().get(i).setQuantity(L.getTotal_objects().get(i).getQuantity() -1);
+                    System.out.println("Ahora que ha seleccionado lo que quiere pedir prestado, indiquenos su ID de usuario");
+                    Long answer2 = s.nextLong();
+                    for (int j = 0; j<L.getCustomers().size(); i++){
+                        if (L.getCustomers().get(j).getUserID() == answer2 && L.getCustomers().get(j).getDocuments().size() < 5 ){
+                            L.getCustomers().get(j).getDocuments().add(answer2);
+    
+    
+                        }
+                        else{
+                            System.out.println("No tiene mas espacio, devuelva algun otro libro ");
+                        }
                     }
-                    else{
-                        System.out.println("No tiene mas espacio, devuelva algun otro libro ");
-                    }
+               
                 }
             }
         }
@@ -141,6 +151,51 @@ public class Methods_ExInheritance{
             }
         }
 
+    }
+    public void getAviability(Library L, Scanner S){
+        System.out.println("Seleccione el Id del libro de cual quiere verificar su disponibilidad:");
+        for (int i =0; i<L.getTotal_objects().size(); i++){
+            System.out.println(L.getTotal_objects().get(i).getTitle() + " el Id de este titulo es: " + L.getTotal_objects().get(i).getId() );
+        }
+        System.out.println("Seleccione el libro deseado: ");
+        long answer3 = S.nextLong();
+        for (int i =0; i<L.getTotal_objects().size(); i++){
+            if(L.getTotal_objects().get(i).getId() == answer3){
+                System.out.println("Quedan: " + L.getTotal_objects().get(i).getQuantity() + " ejemplares de este titulo");
+            }
+        }
+
+    }
+    public void docsByUser(Scanner S, Library L) {
+        System.out.println("Ingrese el ID del cliente del cuál quiere saber la cantidad de documentos que posee: ");
+        long answer4 = S.nextLong();
+        for (int i =0; i<L.getCustomers().size(); i++){
+            if(L.getCustomers().get(i).getUserID() == answer4){
+                System.out.println("Este usuario tiene: " + L.getCustomers().get(i).getDocuments().size() + " documentos");
+            }
+        }
+    }
+    public void returnABook(Scanner s, User u, Library L){
+        System.out.println("Ingrese su ID: ");
+        long answer5 = s.nextLong();
+        for (int i =0; i<L.getCustomers().size(); i++){
+            if (L.getCustomers().get(i).getUserID() == answer5){
+                System.out.println("Los ID de sus documentos son los siguientes, cual quiere regresar (ingrese su ID): ");
+                for (int j =0; j<L.getCustomers().get(i).getDocuments().size(); j++){
+                    System.out.println(L.getCustomers().get(i).getDocuments().get(j));
+                }
+                long answer6 = s.nextLong();
+                L.getCustomers().get(i).getDocuments().remove(answer6);
+                for (int k =0; k<L.getTotal_objects().size(); k++){
+                    if(L.getTotal_objects().get(k).getId() == answer6){
+                        L.getTotal_objects().get(k).setQuantity(L.getTotal_objects().get(k).getQuantity() +1);
+                    }
+                }
+
+            }
+        }
+
+        
     }
 
 
