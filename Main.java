@@ -52,7 +52,10 @@ public class Main {
                 metIn.returnABook(in, user, library);
             }
             if (opcion == 8){
-                metIn.docsByType(library);
+                metIn.docsandMagazinesByType(library, "documentos");
+            }
+            if( opcion == 9){
+                metIn.docsandMagazinesByType(library, "revista");
             }
 
         }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Random;
@@ -202,19 +203,21 @@ public class Methods_ExInheritance{
 
         
     }
-    public void docsByType(Library L){
-        Set<String> docsTypes = new HashSet<String>(L.getDocument_types());
-        for(String i: docsTypes){
-            System.out.println(i + ": " + Collections.frequency(L.getDocument_types(), i));
+    public void docsandMagazinesByType(Library L, String s){
+        if (s.equals("documentos")){
+            docCounter(L.getDocument_types());
         }
-
-    }
-    public void magazinesBySubject (Library L){
-        Set<String> docsTypes = new HashSet<String>(L.getMagazine_types());
-        for(String i: docsTypes){
-            System.out.println(i + ": " + Collections.frequency(L.getMagazine_types(), i));
+        if (s.equals("revista")){
+            docCounter(L.getMagazine_types());
         }
-
+       
     }
+    public void docCounter(ArrayList<String> ar){
+        Set<String> docsTypes = new HashSet<String>(ar);
+            for(String i: docsTypes){
+                System.out.println(i + ": " + Collections.frequency(ar, i));
+            }
+    }
+
 
 }
