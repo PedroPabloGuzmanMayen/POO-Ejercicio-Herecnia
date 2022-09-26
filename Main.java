@@ -1,3 +1,7 @@
+/**
+ * @Author Pedro Pablo Guzman Mayen
+ * @version 1.0.0 
+ */
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,7 +13,10 @@ public class Main {
     static Document document;
     static Scanner in = new Scanner(System.in);
     static Random random = new Random();
-    
+    /**
+     * Este metodo se encarga de generar las principales acciones del programa
+     * @param args representa las cadenas que pueden ser ingresadas
+     */
     public static void main(String[] args){
         while(condition = true){
             System.out.println("*** BIBLIOTECA***");
@@ -27,7 +34,7 @@ public class Main {
             System.out.println("OPCION 7: Devolver un documento");
             System.out.println("OPCION 8: Cantidad de documentos por materia");
             System.out.println("OPCION 9: Cantidad de revistas por materia");
-            System.out.println("OPCION 10: Imprimir ");
+            System.out.println("OPCION 10: Salir ");
             int opcion = in.nextInt();
             if (opcion == 1){
                 metIn.addObjectToLibrary(document, library, in);
@@ -60,8 +67,9 @@ public class Main {
                 metIn.docsandMagazinesByType(library, "revista");
             }
             if (opcion == 10){
-                metIn.printUserobjects(library, user);
+                condition = false;
             }
+      
 
         }
       
