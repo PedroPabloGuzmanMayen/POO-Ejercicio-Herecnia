@@ -1,5 +1,8 @@
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 
 
 public class Methods_ExInheritance{
@@ -115,7 +118,7 @@ public class Methods_ExInheritance{
         Long answer = s.nextLong();
         for (int i = 0; i<L.getTotal_objects().size(); i++){
             if (L.getTotal_objects().get(i).getId() == answer){
-                if(L.getTotal_objects().get(i).getQuantity() != 0){
+                if(L.getTotal_objects().get(i).getQuantity() == 0){
                     System.out.println("No quedan mas documentos con este Id, otra persona los tomo prestados, vuelva otro dia");
                 }
                 else{
@@ -125,11 +128,13 @@ public class Methods_ExInheritance{
                     for (int j = 0; j<L.getCustomers().size(); i++){
                         if (L.getCustomers().get(j).getUserID() == answer2 && L.getCustomers().get(j).getDocuments().size() < 5 ){
                             L.getCustomers().get(j).getDocuments().add(answer2);
+                            break;
     
     
                         }
                         else{
                             System.out.println("No tiene mas espacio, devuelva algun otro libro ");
+                            continue;
                         }
                     }
                
@@ -146,9 +151,9 @@ public class Methods_ExInheritance{
             if (L.getTotal_objects().get(i).getId() == answerID){
                 System.out.println(L.getTotal_objects().get(i).getTitle());
             }
-            else{
-                System.out.println("No hay documentos que tengan ese ID");
-            }
+            //else{
+                //System.out.println("No hay documentos que tengan ese ID");
+            //}
         }
 
     }
@@ -196,6 +201,13 @@ public class Methods_ExInheritance{
         }
 
         
+    }
+    public void docsByType(Library L){
+        Set<String> docsTypes = new HashSet<String>(L.getDocument_types());
+        for(String i: docsTypes){
+            System.out.println(i + ": " + Collections.frequency(L.getDocument_types(), i));
+        }
+
     }
 
 

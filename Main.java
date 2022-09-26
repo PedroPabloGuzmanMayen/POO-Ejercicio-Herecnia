@@ -21,6 +21,10 @@ public class Main {
             System.out.println("OPCION 1: Agregar un documento a la libreria");
             System.out.println("OPCION 2: Agregar usuario");
             System.out.println("OPCION 3: Pedir prestado un documento");
+            System.out.println("OPCION 4: Buscar libro por ID");
+            System.out.println("OPCION 5: Verificar la disponibilidad de un documento");
+            System.out.println("OPCION 6: Cantidad de objetos de un usuario");
+            System.out.println("OPCION 7: Devolver un documento");
             int opcion = in.nextInt();
             if (opcion == 1){
                 metIn.addObjectToLibrary(document, library, in);
@@ -33,7 +37,22 @@ public class Main {
             if (opcion ==3){
                 metIn.BorrowAnObject(library, user, in);
             }
-            
+            if (opcion == 4){
+                metIn.searchById(library, in);
+            }
+            if (opcion == 5){
+                metIn.getAviability(library, in);
+
+            }
+            if (opcion == 6){
+                metIn.docsByUser(in, library);
+            }
+            if (opcion == 7){
+                metIn.returnABook(in, user, library);
+            }
+            if (opcion == 8){
+                metIn.docsByType(library);
+            }
 
         }
       
